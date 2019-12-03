@@ -47,7 +47,6 @@ public class Robot extends TimedRobot {
   public static Elevator elevator = new Elevator();
   public static Sensors sensors = new Sensors();
   public static Claw claw;
-  public static Vacuum vacuum;
   public static OI oi;
   private static final Compressor comp = new Compressor(0);
   // private Command dash = new DashboardData();
@@ -61,12 +60,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    if (vacuumMode) {
-      vacuum = new Vacuum();
-    } else {
       claw = new Claw();
       claw.setGrip(false);
-    }
+    
     Robot.oi = new OI();
     Robot.comp.setClosedLoopControl(true);
     // this.chooser.setDefaultOption("Default Auto", new ExampleCommand());
@@ -198,17 +194,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Back raw position", Robot.climber.getBackRaw());
     SmartDashboard.putNumber("Back raw setpoint", Robot.climber.getBackRawSetpoint());
     SmartDashboard.putNumber("Back applied output", Robot.climber.getAppliedOutput(Dart.BACK));
-
-    if (vacuumMode) {
-      SmartDashboard.putNumber("wrist angle", Robot.vacuum.getPosition());
-      SmartDashboard.putNumber("wrist ticks", Robot.vacuum.getTicks());
-      SmartDashboard.putNumber("wrist setpoint", Robot.vacuum.getSetpoint());
-      SmartDashboard.putNumber("Vacuum motor current", Robot.vacuum.getVacCurrent());
-      SmartDashboard.putNumber("Vacuum motor current average", 0);
-    } else {
-
-    }
-
+    
     SmartDashboard.putNumber("elevator position", Robot.elevator.getPosition());
     SmartDashboard.putNumber("elevator setpoint", Robot.elevator.getCurrentSetpoint());
     SmartDashboard.putNumber("elevator output value", Robot.elevator.getAppliedOutput());
@@ -222,15 +208,6 @@ public class Robot extends TimedRobot {
   }
 
   public void updateSmartDashboard() {
-    if (vacuumMode) {
-      SmartDashboard.putNumber("wrist angle", Robot.vacuum.getPosition());
-      SmartDashboard.putNumber("wrist ticks", Robot.vacuum.getTicks());
-      SmartDashboard.putNumber("wrist setpoint", Robot.vacuum.getSetpoint());
-      SmartDashboard.putNumber("Vacuum motor current", Robot.vacuum.getVacCurrent());
-    } else {
-
-    }
-
     SmartDashboard.putNumber("Front climber position", Robot.climber.getFront());
     SmartDashboard.putNumber("Front climber setpoint", Robot.climber.getFrontSetpoint());
     SmartDashboard.putNumber("Front raw position", Robot.climber.getFrontRaw());
