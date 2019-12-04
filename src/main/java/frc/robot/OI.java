@@ -79,34 +79,23 @@ public class OI {
 		this.oButtonX.whenPressed(new SetElevator(RobotMap.ELEVATOR_GROUND)); 
 		this.oButtonY.whenPressed(new SetElevator(RobotMap.ELEVATOR_HIGH)); 
 		this.oButtonB.whenPressed(new SetElevator(RobotMap.ELEVATOR_MED));
-
 		//this.oButtonStart.whenPressed(new TurnToAngle(-45));
-		
 		//this.oButtonStart.whenPressed(new SetLight(true));
 		//this.oButtonBack.whenPressed(new SetLight(false));
-
 		//this.oButtonX.whenPressed(new TurnToAngle(Sensors.ballReqester.getAngle()));
 		//this.oButtonBack.whileHeld(new IncrementElevator(-RobotMap.ELEVATOR_INCREMENT));
 		//this.oButtonStart.whileHeld(new IncrementElevator(RobotMap.ELEVATOR_INCREMENT));
 		//this.oButtonBack.whenPressed(new SetElevatorSmartDashboard());
 
-		if (Robot.vacuumMode) {
-			//this.oButtonLeftBumper.whenPressed(new SetVacuumAngle(45));
-			//this.oButtonRightBumper.whenPressed(new SetVacuumAngle(0));
-		}else{
-			this.oButtonLeftBumper.whenPressed(new ToggleClaw());
-			this.oButtonRightBumper.whenPressed(new ToggleClaw());
-		}
+		this.oButtonLeftBumper.whenPressed(new ToggleClaw());
+		this.oButtonRightBumper.whenPressed(new ToggleClaw());
 
 		this.dButtonA.whenPressed(new GoToStrip());
 		this.dButtonX.whenPressed(new DriveForward(30));
-
 		//this.dButtonA.whenPressed(new SetFrontClimber(RobotMap.CLIMBER_GROUND, RobotMap.CLIMBER_GROUND_SLOT));
 		//this.dButtonX.whenPressed(new SetBackClimber(RobotMap.CLIMBER_GROUND, RobotMap.CLIMBER_GROUND_SLOT));
 		//this.dButtonB.whenPressed(new SetFrontClimber(RobotMap.CLIMBER_LIFT, RobotMap.CLIMBER_GROUND_SLOT));
 		//this.dButtonY.whenPressed(new SetBackClimber(RobotMap.CLIMBER_LIFT, RobotMap.CLIMBER_GROUND_SLOT));
-
-
 		//this.dButtonBack.whenPressed(new ZeroClimber(Dart.FRONT));
 		this.dButtonBack.whenPressed(new ZeroBothClimbers());
 	}

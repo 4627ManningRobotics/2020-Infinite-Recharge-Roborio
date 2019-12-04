@@ -41,6 +41,6 @@ public class Claw extends Subsystem {
 
   public void setSpeed(double speed){
     speed = Utilities.constrain(speed, -RobotMap.MAX_INTAKE_SPEED, RobotMap.MAX_INTAKE_SPEED);
-    this.intake.set(ControlMode.PercentOutput, speed);
-  }
+    this.intake.set(speed); //ControlMode.PercentOutput, 
+  }// fix this
 }
